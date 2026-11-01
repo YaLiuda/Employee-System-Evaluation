@@ -1,6 +1,7 @@
 #include <iostream>
 #include <stdexcept>
 #include <fstream>
+#include <vector>
 #include <cctype>
 using namespace std;
 
@@ -111,14 +112,14 @@ return 1;
 
 int score;
 /*
-int *employecount=0;
+int employecount=0;
 cout<<" Enter, how many employes do you wanna evaluate? ";
-cin>>*employecount;
-for(char checkingval:*employecount) {
-while(*checkingval.ispunct()){
+cin>>employecount;
+for(char checkingval:employecount) {
+while(checkingval.ispunct()){
         cerr<<"[The inputed amount of employes contains unavaible puncts]"<<endl;
         cout<<"Input the avaible number of employes which you want to evaluate"<<endl;
-cin>>*employecount;        
+cin>>employecount;        
     } }
 
 
@@ -128,8 +129,8 @@ for(int r=0; )
 /
 
 
-int employes[*employecount];
- for(int r=0;r<*employecount;r++){
+int employes[employecount];
+ for(int r=0;r<employecount;r++){
 cout<<"For "<<r+1<<" employer, the score is:"<<endl;
 cin>>score;   */
 
