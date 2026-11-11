@@ -16,16 +16,20 @@ return check;
 }
 
 int checkscore (int cscore){
-
+while(cscore>maxlimit || cscore < 1 || cin.fail()){
+try{
+throw runtime_error ("The score is > than the limit of selected evaluating system");}
+catch (const exception & e){
+    cout<<e.what()<<endl; }
+cin.clear();
+cin.ignore(numeric_limits<streamsize>::max(),'\n')
 
 
 }
 
 
-while (score >maxlimit){
-try{
-    throw runtime_error("The score is > than the limit of selected evaluating system");}
-catch (const exception & e){
+
+      catch (const exception & e){
     cout<<e.what()<<endl;
 }  cin>>
 }
