@@ -3,7 +3,41 @@
 #include <fstream>
 #include <vector>
 #include <cctype>
+#include <limits>
 using namespace std;
+
+int checkuserinput (int check){
+while (check <1 || cin.fail()){
+cerr<<"The inputed amount is invalid"<<endl;
+cin.clear();
+cin.ignore(numeric_limits<streamsize>::max(),'\n')
+cin>>check;}
+return check;
+}
+
+int checkscore (int cscore){
+
+
+
+}
+
+
+while (score >maxlimit){
+try{
+    throw runtime_error("The score is > than the limit of selected evaluating system");}
+catch (const exception & e){
+    cout<<e.what()<<endl;
+}  cin>>
+}
+
+
+
+
+
+
+
+
+
 
 void checkforLOG(){
 ifstream checkingforlog("server.log");
@@ -92,8 +126,9 @@ ITS GONNA BE ENOUTH IN THE FUNCTION PARAMETER WRITE JUST *NEWVARIABLE NAME
 */
 }
 
-int maxlimit=10;
+
 int main() {
+int maxlimit=10;
 
 cout<<"Wich system evaluating you prefer to use?"<< endl;
 cout<< "For 1-10 write A. For 1-100 write B"<< endl;
@@ -105,39 +140,31 @@ maxlimit=10;
 }
 else if(anwer=='B' || anwer=='b'){
 maxlimit=100;}
- 
-else {cerr<<"[Invalid evaluating system]";
-return 1;
+else {
+    cerr<<"[Invalid evaluating system]";
+    return 1;
 }
 
 int score;
-/*
-int employecount=0;
-cout<<" Enter, how many employes do you wanna evaluate? ";
+int employecount=0; 
+
+cout<<" Enter, how many employes do you want to evaluate? ";
 cin>>employecount;
-for(char checkingval:employecount) {
-while(checkingval.ispunct()){
-        cerr<<"[The inputed amount of employes contains unavaible puncts]"<<endl;
-        cout<<"Input the avaible number of employes which you want to evaluate"<<endl;
-cin>>employecount;        
-    } }
+checkuserinput(employecount);
+vector<int> emplscore (employecount);
 
+for(int i=0, i<emplscore.size(); i++) {
+cout<<"Input the score for: "<<i+1<<" employee."
 
-/IDEA TO CAHNCGE EVERYTHING TO A VECTOR
-vector<int> employes (employecount);
-for(int r=0; )
-/
+cin>>score;
 
+//CREATE A SEPARATE FUNCTION WHERE I WILL CHECK THE SCORE
+score = checkscore(score); }
 
-int employes[employecount];
- for(int r=0;r<employecount;r++){
-cout<<"For "<<r+1<<" employer, the score is:"<<endl;
-cin>>score;   */
+//we still have to check if the score is >maxlimit
 
-
-/*
-vector<int> employes (employecount);
-for(int r=)
+emplscore[i] = 
+//BUT ADDITIONALLY THE SCORE HAS TO BE  > MAXLIMIT
 
 
 */
