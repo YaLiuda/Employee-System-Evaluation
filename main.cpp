@@ -23,19 +23,9 @@ catch (const exception & e){
     cout<<e.what()<<endl; }
 cin.clear();
 cin.ignore(numeric_limits<streamsize>::max(),'\n')
-
-
+cin>>cscore;}
+return cscore;
 }
-
-
-
-      catch (const exception & e){
-    cout<<e.what()<<endl;
-}  cin>>
-}
-
-
-
 
 
 
@@ -157,36 +147,20 @@ cin>>employecount;
 checkuserinput(employecount);
 vector<int> emplscore (employecount);
 
+
+
 for(int i=0, i<emplscore.size(); i++) {
 cout<<"Input the score for: "<<i+1<<" employee."
 
 cin>>score;
-
 //CREATE A SEPARATE FUNCTION WHERE I WILL CHECK THE SCORE
-score = checkscore(score); }
-
+score = checkscore(score); 
 //we still have to check if the score is >maxlimit
-
-emplscore[i] = 
-//BUT ADDITIONALLY THE SCORE HAS TO BE  > MAXLIMIT
+emplscore[i] = score; }
 
 
-*/
-int employes[employecount];
- for(int r=0;r<employecount;r++){
-cout<<"For "<<r+1<<" employer, the score is:"<<endl;
-cin>>score;
 
 
-while (score<1 || score>maxlimit){
-try{
-throw runtime_error("Invalid inputed score");}
-catch (const runtime_error& e){
-cout<<e.what()<<endl;
-cout<<"Input the corresponding score once again (selected system was from 1 to: "
-<<maxlimit<<") ";
-cin>>score;}}
-employes[r]=score;}
 
 int Vmax, Vmin;
 
