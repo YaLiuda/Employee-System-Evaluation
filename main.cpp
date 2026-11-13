@@ -10,10 +10,12 @@ int checkuserinput (int check){
 while (check <1 || cin.fail()){
 cerr<<"The inputed amount is invalid"<<endl;
 cin.clear();
-cin.ignore(numeric_limits<streamsize>::max(),'\n')
+cin.ignore(numeric_limits<streamsize>::max(),'\n');
 cin>>check;}
 return check;
 }
+
+
 
 int checkscore (int cscore){
 while(cscore>maxlimit || cscore < 1 || cin.fail()){
@@ -22,11 +24,61 @@ throw runtime_error ("The score is > than the limit of selected evaluating syste
 catch (const exception & e){
     cout<<e.what()<<endl; }
 cin.clear();
-cin.ignore(numeric_limits<streamsize>::max(),'\n')
+cin.ignore(numeric_limits<streamsize>::max(),'\n');
 cin>>cscore;}
+//if the return is gonna be located innside the while loop
+//the score is gonna be returned constantly even without checking 
 return cscore;
 }
 
+
+
+void change (int ptr [], int size, int *max, int *min) {
+
+/*int ptr if we assign an array to a function it has to contain [] or * like symbol of array. Since otherwise 
+we say like "int ptr is a single variable" */
+*max = ptr[0];
+*min = ptr[0];
+
+int emplScoreMore = 0;
+auto sum = 0;
+int average= 0;
+for (int i =0; i < size; i++) {
+if (*max < ptr[i]) {
+*max = ptr[i]; }
+ if (*min > ptr[i]) { 
+ *min = ptr[i]; }
+ sum += ptr[i];}
+
+average = sum /size; 
+for (int j = 0; j < size; j++) {
+if (ptr[j] > average) {
+emplScoreMore ++;
+}
+}
+cout <<"--"<<"Maximum score: "<<"--"<<*max<<endl;
+cout <<"--"<< "Minimum score: " <<"--"<<*min<<endl;
+cout <<"--"<< "Average score: " <<"--"<<average<<endl;
+cout <<"--"<< "Employes whose score is more than average" <<"-- "<<emplScoreMore;
+
+/WRITE RESULTS TO FILE
+/ but if i want to avoid separetly adding each line which i need write to a file
+/ can i use the vector to store the calculated values and through the for loop automatically insert 
+/everything to a file
+
+ofstream tofile("tofile.txt");
+if(!tofile.is_open()){
+cerr<<"[The file named: tofile, failed to open, consequently failed to insert produce results]";
+return;
+} else { tofile<< "[Employees score results...]"
+tofile <<"--"<<"Maximum score: "<<"--"<<*max<<endl;
+tofile <<"--"<< "Minimum score: " <<"--"<<*min<<endl;
+tofile <<"--"<< "Average score: " <<"--"<<average<<endl;
+tofile <<"--"<< "Employes whose score is more than average" <<"-- "<<emplScoreMore<<endl;
+tofile.close(); }
+
+insert (average, emplScoreMore, max, min);
+}
 
 
 
@@ -58,15 +110,9 @@ ofstream allinfo ("infofromfile.txt", ios::app);
     }
 }
 }}
-/* opening the log file (if the user inputed the correct word), we pass
-    the user's input 
-    as a parameter to a function
-    checking which user exactly 
-    inputed this data (promocode system?)
-    
-    or probably we could pass the incorect score as a function parameter 
-    inside which extracting the log text we understand for which special employee 
-    the score was invalid */
+
+
+
 
 void insert (int average, int employecount, int*MAX, int*MIN){
 ofstream inserttofile("emplresults.txt");
@@ -81,49 +127,14 @@ ofstream inserttofile("emplresults.txt");
  checkforLOG();
 }}
 
-void change (int ptr [], int size, int *max, int *min) {
-/*int ptr if we assign an array to a function it has to contain [] or * like symbol of array. Since otherwise 
-we say like "int ptr is a single variable" */
-*max = ptr[0];
-*min = ptr[0];
-int emplScoreMore = 0;
-auto sum = 0;
-
-int average= 0;
-
-for (int i =0; i < size; i++) {
-if (*max < ptr[i]) {
-*max = ptr[i]; }
- if (*min > ptr[i]) { 
- *min = ptr[i]; }
- sum += ptr[i];}
-
-average = sum /size; 
-
-for (int j = 0; j < size; j++) {
-if (ptr[j] > average) {
-emplScoreMore ++;
-}
-}
-cout <<"--"<<"Maximum score: "<<"--"<<*max<<endl;
-cout <<"--"<< "Minimum score: " <<"--"<<*min<<endl;
-cout <<"--"<< "Average score: " <<"--"<<average<<endl;
-cout <<"--"<< "Employes whose score is more than average" <<"-- "<<emplScoreMore;
-insert (average, emplScoreMore, max, min);
 
 
-/*
-max and min are alredy int * since try to pass them as a function parameter
-with & won't work 
-IN CASES WHEN WE TRY TO PASS THE ADRESS OF THE POINTER IT SELF WHEN INITIALLY THEY WERE CREATED AS A NORMAL VARIBLES - WE DONT HAVE TO WRITE &
-ITS GONNA BE ENOUTH IN THE FUNCTION PARAMETER WRITE JUST *NEWVARIABLE NAME
-*/
-}
+
+
 
 
 int main() {
 int maxlimit=10;
-
 cout<<"Wich system evaluating you prefer to use?"<< endl;
 cout<< "For 1-10 write A. For 1-100 write B"<< endl;
   
@@ -138,7 +149,6 @@ else {
     cerr<<"[Invalid evaluating system]";
     return 1;
 }
-
 int score;
 int employecount=0; 
 
@@ -148,8 +158,7 @@ checkuserinput(employecount);
 vector<int> emplscore (employecount);
 
 
-
-for(int i=0, i<emplscore.size(); i++) {
+for(int i=0; i<emplscore.size(); i++) {
 cout<<"Input the score for: "<<i+1<<" employee."
 
 cin>>score;
@@ -159,12 +168,9 @@ score = checkscore(score);
 emplscore[i] = score; }
 
 
-
-
-
 int Vmax, Vmin;
-
- change (employes, employecount, &Vmax, &Vmin);
+//by 
+ change (emplscore, emplscore.size(), &Vmax, &Vmin);
 
  return 0;
 }
