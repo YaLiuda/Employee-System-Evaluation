@@ -61,10 +61,7 @@ cout <<"--"<< "Minimum score: " <<"--"<<*min<<endl;
 cout <<"--"<< "Average score: " <<"--"<<average<<endl;
 cout <<"--"<< "Employes whose score is more than average" <<"-- "<<emplScoreMore;
 
-/WRITE RESULTS TO FILE
-/ but if i want to avoid separetly adding each line which i need write to a file
-/ can i use the vector to store the calculated values and through the for loop automatically insert 
-/everything to a file
+
 
 ofstream tofile("tofile.txt");
 if(!tofile.is_open()){
@@ -77,7 +74,7 @@ tofile <<"--"<< "Average score: " <<"--"<<average<<endl;
 tofile <<"--"<< "Employes whose score is more than average" <<"-- "<<emplScoreMore<<endl;
 tofile.close(); }
 
-insert (average, emplScoreMore, max, min);
+checkforLOG();
 }
 
 
@@ -105,31 +102,9 @@ ofstream allinfo ("infofromfile.txt", ios::app);
         return ;
         } else {
             allinfo << loginfo <<endl; //writing index it will output the
-             allinfo.close();}
+             allinfo.close();} 
         
-    }
-}
-}}
-
-
-
-
-void insert (int average, int employecount, int*MAX, int*MIN){
-ofstream inserttofile("emplresults.txt");
- if(!inserttofile.is_open()){
- cerr<<"[Failed to open an insert file]";
- return;
- } else{
- inserttofile<<"The employees score average "<<average<<endl<<
- "The employees whose score is > than "<<average<<" : "<< employecount<< endl<<
- "The minimum score "<<*MIN<< endl<< "The maximum score "<< *MAX;
- inserttofile.close();
- checkforLOG();
-}}
-
-
-
-
+    } }}}
 
 
 
