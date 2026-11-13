@@ -6,6 +6,9 @@
 #include <limits>
 using namespace std;
 
+//pre-declared a function, it does exists down bellow
+void checkforLOG();
+
 int checkuserinput (int check){
 while (check <1 || cin.fail()){
 cerr<<"The inputed amount is invalid"<<endl;
@@ -17,7 +20,7 @@ return check;
 
 
 
-int checkscore (int cscore){
+int checkscore (int cscore, int maxlimit){
 while(cscore>maxlimit || cscore < 1 || cin.fail()){
 try{
 throw runtime_error ("The score is > than the limit of selected evaluating system");}
@@ -33,7 +36,7 @@ return cscore;
 
 
 
-void change (int ptr [], int size, int *max, int *min) {
+void change (vector<int>& ptr , int size, int *max, int *min) {
 
 /*int ptr if we assign an array to a function it has to contain [] or * like symbol of array. Since otherwise 
 we say like "int ptr is a single variable" */
@@ -67,7 +70,7 @@ ofstream tofile("tofile.txt");
 if(!tofile.is_open()){
 cerr<<"[The file named: tofile, failed to open, consequently failed to insert produce results]";
 return;
-} else { tofile<< "[Employees score results...]"
+} else { tofile<< "[Employees score results...]";
 tofile <<"--"<<"Maximum score: "<<"--"<<*max<<endl;
 tofile <<"--"<< "Minimum score: " <<"--"<<*min<<endl;
 tofile <<"--"<< "Average score: " <<"--"<<average<<endl;
@@ -134,11 +137,11 @@ vector<int> emplscore (employecount);
 
 
 for(int i=0; i<emplscore.size(); i++) {
-cout<<"Input the score for: "<<i+1<<" employee."
+cout<<"Input the score for: "<<i+1<<" employee.";
 
 cin>>score;
 //CREATE A SEPARATE FUNCTION WHERE I WILL CHECK THE SCORE
-score = checkscore(score); 
+score = checkscore(score, maxlimit); 
 //we still have to check if the score is >maxlimit
 emplscore[i] = score; }
 
