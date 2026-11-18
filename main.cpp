@@ -4,6 +4,8 @@
 #include <vector>
 #include <cctype>
 #include <limits>
+#include <algorithm>
+
 using namespace std;
 
 //pre-declared a function, it does exists down bellow
@@ -47,17 +49,26 @@ int emplScoreMore = 0;
 auto sum = 0;
 int average= 0;
 for (int i =0; i < size; i++) {
-if (*max < ptr[i]) {
+if (*max < ptr[i]) { //we use [] since we continue accessing using the
+ //index based system    
+
 *max = ptr[i]; }
  if (*min > ptr[i]) { 
  *min = ptr[i]; }
  sum += ptr[i];}
 
 average = sum /size; 
+
+
+*****************************************************
+//HERE CALCULATING THE AVERAGE WE COULD WRITE TO A FILE ALL SCORE WHICH
+//ARE >= AVERAGE, BY USING
 for (int j = 0; j < size; j++) {
 if (ptr[j] > average) {
 emplScoreMore ++;
 }
+*****************************************************
+
 }
 cout <<"--"<<"Maximum score: "<<"--"<<*max<<endl;
 cout <<"--"<< "Minimum score: " <<"--"<<*min<<endl;
@@ -144,6 +155,13 @@ cin>>score;
 score = checkscore(score, maxlimit); 
 //we still have to check if the score is >maxlimit
 emplscore[i] = score; }
+ 
+//have to add there like a sorting score system 
+sort (emplscore.begin(), emplscore.end())
+
+
+
+
 
 
 int Vmax, Vmin;
