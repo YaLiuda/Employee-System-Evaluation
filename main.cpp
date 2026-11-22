@@ -157,9 +157,25 @@ score = checkscore(score, maxlimit);
 emplscore[i] = score; }
  
 //have to add there like a sorting score system 
-sort (emplscore.begin(), emplscore.end())
+sort (emplscore.begin(), emplscore.end());
+//we sorted the scores of employees from lowest to the highest.
 
+/*
+THE MAIN RULES:
+the main purpose is just to fetch 3 first highest scores 
+and create like a leaderboard, BUT WHAT HAPPENS IF THE 
+-vect.size is >3?
+ it wont't be better  if we just use - the size () function
+which will retrun the amount of currently stored values, and we will 
+-just desvide it per the helf of the size, 
+-BUT WHAT HAPPENS IF THERE IS 
+ONLY 1 EMPLOYEE? */
 
+//UTILIZE MY METHOD AND THEIR
+
+/*   
+
+*/
 
 
 
