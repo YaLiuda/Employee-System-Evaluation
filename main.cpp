@@ -146,7 +146,9 @@ cin>>employecount;
 checkuserinput(employecount);
 vector<int> emplscore (employecount);
 
+int inter =0 ; //the amoun tof 
 
+ 
 for(int i=0; i<emplscore.size(); i++) {
 cout<<"Input the score for: "<<i+1<<" employee.";
 
@@ -157,8 +159,20 @@ score = checkscore(score, maxlimit);
 emplscore[i] = score; }
  
 //have to add there like a sorting score system 
-sort (emplscore.begin(), emplscore.end());
-//we sorted the scores of employees from lowest to the highest.
+sort (emplscore.begin(), emplscore.end(), greater{});
+//we sorted the scores of employees from hihgest to lowest
+
+//create a leaderboard file
+ofstream leader 
+//1) we tell we cannot create a leaderboard if there are less than 3 scores
+//2) how to create a leader board made of 3 score if there are only 2 or less
+while(inter>=3){ // but what happens if there are no 3 scores inside the vector? 
+for(int &x: emplscore){
+
+
+}
+}
+
 
 /*
 THE MAIN RULES:
@@ -175,6 +189,10 @@ ONLY 1 EMPLOYEE? */
 
 /*   
 
+
+
+
+
 */
 
 
@@ -186,3 +204,4 @@ int Vmax, Vmin;
 
  return 0;
 }
+
