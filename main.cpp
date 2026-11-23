@@ -144,7 +144,7 @@ int employecount=0;
 cout<<" Enter, how many employes do you want to evaluate? ";
 cin>>employecount;
 checkuserinput(employecount);
-vector<int> emplscore (employecount);
+vector<int> emplscore (employe  ggcount);
 
 int inter =0 ; //the amoun tof 
 
@@ -158,44 +158,32 @@ score = checkscore(score, maxlimit);
 //we still have to check if the score is >maxlimit
 emplscore[i] = score; }
  
-//have to add there like a sorting score system 
+
+
+
+//creating a leaderboard made max of 3 score, independing if the 
+//vector's size is less than 3 
 sort (emplscore.begin(), emplscore.end(), greater{});
-//we sorted the scores of employees from hihgest to lowest
 
-//create a leaderboard file
-ofstream leader 
-//1) we tell we cannot create a leaderboard if there are less than 3 scores
-//2) how to create a leader board made of 3 score if there are only 2 or less
-while(inter>=3){ // but what happens if there are no 3 scores inside the vector? 
-for(int &x: emplscore){
+int counter =0;
 
-
-}
-}
+ofstream lead ("leaderboard.txt");
+if (!lead.is_open()) {
+    cerr
+} //
 
 
-/*
-THE MAIN RULES:
-the main purpose is just to fetch 3 first highest scores 
-and create like a leaderboard, BUT WHAT HAPPENS IF THE 
--vect.size is >3?
- it wont't be better  if we just use - the size () function
-which will retrun the amount of currently stored values, and we will 
--just desvide it per the helf of the size, 
--BUT WHAT HAPPENS IF THERE IS 
-ONLY 1 EMPLOYEE? */
+for(int &x : emplscore){
+counter++;
+//insert the first 3 of scores inside a separate file
+lead ("leaderboard.txt", ios::app); 
+leaderboard<< The TOP -3 leaders;
 
-//UTILIZE MY METHOD AND THEIR
-
-/*   
+if(counter==3){ 
+    break;}}
 
 
-
-
-
-*/
-
-
+/*what is the difference between this expression and with the while loop?*/
 
 
 int Vmax, Vmin;
@@ -204,4 +192,5 @@ int Vmax, Vmin;
 
  return 0;
 }
-
+/*
+*/
