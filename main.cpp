@@ -164,28 +164,27 @@ emplscore[i] = score; }
 //creating a leaderboard made max of 3 score, independing if the 
 //vector's size is less than 3 
 sort (emplscore.begin(), emplscore.end(), greater{});
+//by using the sort algorith i sorted all the elements fromt he greates to lowest
 
-int counter =0;
 
 ofstream lead ("leaderboard.txt");
 if (!lead.is_open()) {
     cerr
 } //
 
+int counter =0; //crated a counter to cont through how many values we alredy passed thrugh, to stop
 
-for(int &x : emplscore){
-counter++;
-//insert the first 3 of scores inside a separate file
+for(int &x : emplscore){ 
+counter++; 
 lead ("leaderboard.txt", ios::app); 
-leaderboard<< The TOP -3 leaders;
-
+leaderboard<<"The TOP -3 leaders:"<<endl;
+leaderboard<< counter << ". " << x <<endl;//used the counter to showcase the place like 1. 2. ...
 if(counter==3){ 
     break;}}
 
 
-/*what is the difference between this expression and with the while loop?*/
 
-
+    
 int Vmax, Vmin;
 //by 
  change (emplscore, emplscore.size(), &Vmax, &Vmin);
