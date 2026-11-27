@@ -60,14 +60,12 @@ if (*max < ptr[i]) { //we use [] since we continue accessing using the
 average = sum /size; 
 
 
-*****************************************************
 //HERE CALCULATING THE AVERAGE WE COULD WRITE TO A FILE ALL SCORE WHICH
 //ARE >= AVERAGE, BY USING
 for (int j = 0; j < size; j++) {
 if (ptr[j] > average) {
 emplScoreMore ++;
 }
-*****************************************************
 
 }
 cout <<"--"<<"Maximum score: "<<"--"<<*max<<endl;
@@ -144,7 +142,7 @@ int employecount=0;
 cout<<" Enter, how many employes do you want to evaluate? ";
 cin>>employecount;
 checkuserinput(employecount);
-vector<int> emplscore (employe  ggcount);
+vector<int> emplscore (employecount);
 
 int inter =0 ; //the amoun tof 
 
@@ -167,26 +165,33 @@ sort (emplscore.begin(), emplscore.end(), greater{});
 //by using the sort algorith i sorted all the elements fromt he greates to lowest
 
 
-ofstream lead ("leaderboard.txt");
-if (!lead.is_open()) {
-    cerr
-} //
 
+
+ofstream lead ("leaderboard.txt");
+
+
+if (!lead.is_open()) {
+    cerr << "--FAILED TO OPEN A FILE, TO INSERT THE LEADERBOARD RESULTS--";
+    return 1;
+
+} else { 
 int counter =0; //crated a counter to cont through how many values we alredy passed thrugh, to stop
 
+lead<<"The TOP 3 scores leaders:"<<endl;
+//THERE IS NO NEED FO RAPPEND MODE, SINCE WE HADN'T OPENED ALREDY EXISTING FILE
+// OR WE HADN'T CLOSED IT EARLIER.
 for(int &x : emplscore){ 
 counter++; 
-lead ("leaderboard.txt", ios::app); 
-leaderboard<<"The TOP -3 leaders:"<<endl;
-leaderboard<< counter << ". " << x <<endl;//used the counter to showcase the place like 1. 2. ...
+
+lead<< counter << ". " << x <<endl;//used the counter to showcase the place like 1. 2. ...
 if(counter==3){ 
     break;}}
+lead.close();}
 
 
 
-    
 int Vmax, Vmin;
-//by 
+
  change (emplscore, emplscore.size(), &Vmax, &Vmin);
 
  return 0;
